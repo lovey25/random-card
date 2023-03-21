@@ -24,11 +24,15 @@ export default function Picture({ present, setName, onStart, gogo }) {
     if (present) {
       setImgsrc(require(`./img/${present["사진"]}.jpg`));
     }
+    setAnswer("?");
   }, [present]);
 
   const reveal = () => {
-    console.log("답");
-    setAnswer(`${present["팀"]}팀 / ${present["이름"]} 님`);
+    if (answer === "?") {
+      setAnswer(`${present["팀"]}팀 / ${present["이름"]} 님`);
+    } else {
+      gogo();
+    }
   };
 
   return (
